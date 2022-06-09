@@ -46,8 +46,9 @@ Use the copy function below to do the following:
 */
 
 
-function copy(/*your code here*/){
-  /*your code here*/
+function copy(Array){
+  Copy_Of_Array = Array;
+  return Copy_Of_Array;
 }
 
 
@@ -63,10 +64,18 @@ For Example: is31Flavors(originalFlavors) will return true if your code is worki
 */
 
 
-function is31Flavors(/*your code here*/){
-  /*your code here*/
+function is31Flavors(Array){
+  Total = 0;
+  for(i = 0; i < Array.length; i++){
+    Total += 1
+  }
+  if(Total === 31){
+    return true;
+  }
+  else{
+    return false;
+  }
  }
-
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 3: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
@@ -82,8 +91,9 @@ Use the addFlavor function below to do the following:
 */
 
 
-function addFlavor(/*your code here*/){
-  /*your code here*/
+function addFlavor(Array,New_Flavor){
+  Array.unshift(New_Flavor);
+  return Array
  }
 
 
@@ -100,8 +110,9 @@ Use the removeLastFlavor function below to do the following:
 */
 
 
-function removeLastFlavor(/*your code here*/){
- /*your code here*/
+function removeLastFlavor(Array){
+ Array.pop()
+ return Array
 }
 
 
@@ -118,8 +129,8 @@ Use the getFlavorByIndex function below to do the following:
 */
 
 
-function getFlavorByIndex(/*your code here*/){
-  /*your code here*/
+function getFlavorByIndex(Array,Number){
+  return Array[Number]
 }
 
 
@@ -138,9 +149,12 @@ Use the removeFlavorByName function below to do the following:
   HINT: You can use .splice() for this
 */
 
-function removeFlavorByName(/*your code here*/){
-  /*your code here*/
+function removeFlavorByName(Array,FlavorName){
+  return Array.filter(function(element){ 
+    return element != FlavorName; 
+});
 }
+
 
 
 
@@ -163,9 +177,14 @@ Use the filterByWord function below to do the following:
 */
 
 
-function filterByWord(/*your code here*/){
-  /*your code here*/
+function filterByWord(Array,Flavor){
+  let NewArray = []
+  if(Array.includes(Flavor) === true){
+    NewArray.push(Flavor)
+  }
+    return NewArray
 }
+
 
 
 
@@ -181,9 +200,23 @@ Use the getAverageWordLength function below to do the following:
   For example: getAverageWordLength(originalFlavors) should return a number between 0 and 3.     
 */
 
-function getAverageWordLength(/*code here*/){
-  /*code here*/
+function getAverageWordLength(Array){
+  NewArray = [];
+  WordCount = [];
+  total = 0;
+  Average = 0;
+
+  for(i = 0; i < Array.length; i++){
+    NewArray = Array[i].split(" ")
+    WordCount[i] = NewArray.length;
+    total += WordCount[i];
+  }
+  
+  Average = total / Array.length;
+    return Average;
 }
+
+
 
 
 /* 💪💪💪💪💪💪💪💪💪💪 STRETCH 2: 💪💪💪💪💪💪💪💪💪
@@ -199,90 +232,111 @@ Use the getRandomFlavors function and new arrays below to do the following:
 */
 
 
-function getRandomFlavors(/*code here*/){
-  /*code here*/
+function getRandomFlavors(Array_1, Array_2, Array_3, Array_4){
+  randomFlavors = [];
+
+  //functions to randomly pick for each array
+  function random(Array){
+    const RandomPick = Math.floor(Math.random() * Array.length);
+    return Array[RandomPick];
+  }
+
+
+  //The actual process of randomly picking from each array and inserting it into a new Array
+  for(i = 0; i < 31; i++){
+    if(randomFlavors.length === 31) break;
+    randomFlavors[i] = random(Array_1);
+    randomFlavors[i] = random(Array_2);
+    randomFlavors[i] = random(Array_3);
+    randomFlavors[i] = random(Array_4);
+    
+
+  }
+  return randomFlavors;
 }
 
-// NEW DATA ARRAYS FOR STRETCH 2 ⬇️
-// const newFlavors = [
-//   "Date night",
-//   "U.S.S Butterscotch (Stranger Things special)",
-//   "Honey Almond",
-//   "Mint Chocolate Chip",
-//   "Chocolate",
-//   "Oreo® Cookies'n Cream",
-//   "Chocolate Chip",
-//   "Pralines 'n Cream",
-//   "Very Berry Strawberry",
-//   "Chocolate Chip Cookie Dough",
-//   "Old Fashioned Butter Pecan",
-//   "Jamoca®",
-//   "Jamoca® Almond Fudge",
-//   "Reese's® Peanut Butter Cup",
-//   "Rocky Road",
-//   "Peanut Butter ’n Chocolate",
-//   "Gold Medal Ribbon®",
-//   "World Class® Chocolate",
-//   "Cherries Jubilee",
-//   "Chocolate Fudge",
-//   "Daiquiri Ice",
-//   "Rainbow Sherbet",
-//   "Rainbow Swirl"
-// ] 
 
-// const seasonalFlavors = [
-//   "America's Birthday Cake",
-//   "Baseball Nut®",
-//   "Blueberry Cheesecake",
-//   "Bourbon Street Pecan Pie",
-//   "Brownie Bar Mashup",
-//   "Cherry Cordial with Kisses",
-//   "Chocolate Mousse Royale",
-//   "French Vanilla",
-//   "Eggnog",
-//   "German Chocolate Cake",
-//   "Icing on the Cake",
-//   "Love Potion #31",
-//   "New York Cheesecake",
-//   "Nutty Coconut",
-//   "Peppermint",
-//   "Strawberry Cheesecake",
-//   "Rock ’n Pop Swirl",
-//   "Reese’s Peanut Butter Cup",
-//   "Trick Oreo Treat",
-//   "Winter White Chocolate",
-//   "made with Snickers®",
-//   "made with M&M's®",
-//   "Heath®",
-//   "Mango Tango"
-// ]
 
-// const regionalFlavors = [
-//   "Pink Bubblegum",
-//   "Caramel Macchiato",
-//   "York Peppermint Pattie",
-//   "Cotton Candy",
-//   "Orange Sherbet",
-//   "Grape Ice",
-//   "Watermelon Ice",
-//   "Miami Vice Sorbet",
-//   "Splish Splash®",
-//   "Wild 'n Reckless Sherbet",
-//   "Lemon Custard",
-//   "Oregon Blackberry",
-//   "Bananas ‘n Strawberries",
-//   "Mississippi Mud",
-//   "Rum Raisin",
-//   "Creole Cream Cheese",
-//   "Chocolate Almond",
-//   "Fudge Brownie",
-//   "Banana Nut",
-//   "Black Walnut",
-//   "Cotton Candy Crackle",
-//   "Quarterback Crunch",
-//   "Chocolate Chocolate Chip Cheesecake",
-//   "Caramel 'n' Cookies"
-// ]
+// NEW DATA ARRAYS FOR STRETCH 2 
+ const newFlavors = [
+   "Date night",
+   "U.S.S Butterscotch (Stranger Things special)",
+   "Honey Almond",
+   "Mint Chocolate Chip",
+   "Chocolate",
+   "Oreo® Cookies'n Cream",
+   "Chocolate Chip",
+   "Pralines 'n Cream",
+   "Very Berry Strawberry",
+   "Chocolate Chip Cookie Dough",
+   "Old Fashioned Butter Pecan",
+   "Jamoca®",
+   "Jamoca® Almond Fudge",
+   "Reese's® Peanut Butter Cup",
+   "Rocky Road",
+   "Peanut Butter 'n Chocolate",
+   "Gold Medal Ribbon®",
+   "World Class® Chocolate",
+   "Cherries Jubilee",
+   "Chocolate Fudge",
+   "Daiquiri Ice",
+   "Rainbow Sherbet",
+   "Rainbow Swirl"
+ ] 
+
+ const seasonalFlavors = [
+   "America's Birthday Cake",
+   "Baseball Nut®",
+   "Blueberry Cheesecake",
+   "Bourbon Street Pecan Pie",
+   "Brownie Bar Mashup",
+   "Cherry Cordial with Kisses",
+   "Chocolate Mousse Royale",
+   "French Vanilla",
+   "Eggnog",
+   "German Chocolate Cake",
+   "Icing on the Cake",
+   "Love Potion #31",
+   "New York Cheesecake",
+   "Nutty Coconut",
+   "Peppermint",
+   "Strawberry Cheesecake",
+   "Rock ’n Pop Swirl",
+   "Reese’s Peanut Butter Cup",
+   "Trick Oreo Treat",
+   "Winter White Chocolate",
+   "made with Snickers®",
+   "made with M&M's®",
+   "Heath®",
+   "Mango Tango"
+ ]
+
+ const regionalFlavors = [
+   "Pink Bubblegum",
+   "Caramel Macchiato",
+   "York Peppermint Pattie",
+   "Cotton Candy",
+   "Orange Sherbet",
+   "Grape Ice",
+   "Watermelon Ice",
+   "Miami Vice Sorbet",
+   "Splish Splash®",
+   "Wild 'n Reckless Sherbet",
+   "Lemon Custard",
+   "Oregon Blackberry",
+   "Bananas ‘n Strawberries",
+   "Mississippi Mud",
+   "Rum Raisin",
+   "Creole Cream Cheese",
+   "Chocolate Almond",
+   "Fudge Brownie",
+   "Banana Nut",
+   "Black Walnut",
+   "Cotton Candy Crackle",
+   "Quarterback Crunch",
+   "Chocolate Chocolate Chip Cheesecake",
+   "Caramel 'n' Cookies"
+ ]
 
 
 
